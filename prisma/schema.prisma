@@ -9,19 +9,19 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
-  username  String   @unique // Ensure this is marked as @unique
+  username  String   @unique @db.VarChar(50)  // Limiting length for efficiency
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  images    Image[]  // Relation to Image model
+
+  images    Image[]  // One-to-many relationship with Image
 }
 
 model Image {
   id           String  @id @default(uuid()) 
-  encodedImage String  // Base64 encoded image
-  result       String  // Some result string
-  username     String  // Foreign key referencing User.username
+  encodedImage String  // Consider using TEXT or another large field in Postgres
+  result       String  
+  username     String  @db.VarChar(50) // Ensure consistency with User.username
 
   user         User    @relation(fields: [username], references: [username], onDelete: Cascade)
 }

@@ -1,46 +1,47 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { MongoClient } from "mongodb";
 import crypto from "crypto";
 
-const prisma = new PrismaClient();
+const MONGODB_URI = process.env.MONGODB_URI as string;
+const client = new MongoClient(MONGODB_URI);
+const db = client.db("Cluster0"); // Change this to your actual DB name
+const usersCollection = db.collection("users");
 
-// Function to hash password (same as in register.ts)
-function hashPassword(password: string) {
-  return crypto.createHash("sha512").update(password).digest("hex");
-}
+// Function to hash passwords using SHA-256
+const hashPassword = (password: string) => {
+  return crypto.createHash("sha256").update(password).digest("hex");
+};
 
 export async function POST(req: Request) {
   try {
-    const { email, password } = await req.json();
+    const { username, password } = await req.json();
 
-    if (!email || !password) {
-      return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
+    if (!username || !password) {
+      return NextResponse.json({ error: "Username and Password are required" }, { status: 400 });
     }
 
-    // Find the user
-    const user = await prisma.user.findUnique({
-      where: { email },
-      select: { email: true, password: true }, // No `id`, use `email`
-    });
+    await client.connect(); // Ensure connection before querying
+
+    // Find user in the database
+    const user = await usersCollection.findOne({ username });
 
     if (!user) {
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    // Hash the entered password and compare with stored hash
-    const hashedInputPassword = hashPassword(password);
-
-    if (hashedInputPassword !== user.password) {
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
+    // Hash the provided password and compare with stored hashed password
+    const hashedPassword = hashPassword(password);
+    if (hashedPassword !== user.password) {
+      return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    // Set a session cookie using `email` instead of `id`
-    const response = NextResponse.json({ message: "Login successful", user }, { status: 200 });
-    response.headers.append("Set-Cookie", `session_id=${user.email}; Path=/; HttpOnly; Secure; SameSite=Strict`);
+    return NextResponse.json({ message: "Login successful" }, { status: 200 });
 
-    return response;
-  } catch (error) {
-    console.error("Login Error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  } catch (error: any) {
+    console.error("Login error:", error);
+    return NextResponse.json({ error: "Login failed", details: error.message || "Unknown error" }, { status: 500 });
+
+  } finally {
+    await client.close(); // Close connection after request
   }
 }
