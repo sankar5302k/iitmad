@@ -37,7 +37,7 @@ const Login: React.FC = () => {
         throw new Error(errorData.error || `${type === "register" ? "Registration" : "Login"} failed`);
       }
 
-      router.push("/appcom");
+      router.push(`/appcom?username=${encodeURIComponent(userData.username)}`);
     } catch (error) {
       alert(`${type === "register" ? "Registration" : "Login"} Error`);
     } finally {
