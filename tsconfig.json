@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/otp.js", "src/app/api/send-otp", "src/app/appcom/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/otp.js", "src/app/api/send-otp", "src/app/appcom/page.tsx"],
   "exclude": ["node_modules"]
 }
