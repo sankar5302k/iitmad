@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique // Ensure this is marked as @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  images    Image[]  // Relation to Image model
+}
+
+model Image {
+  id           String  @id @default(uuid()) 
+  encodedImage String  // Base64 encoded image
+  result       String  // Some result string
+  username     String  // Foreign key referencing User.username
+
+  user         User    @relation(fields: [username], references: [username], onDelete: Cascade)
+}

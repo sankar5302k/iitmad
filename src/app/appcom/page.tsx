@@ -1,10 +1,9 @@
-import Login from "./components/Login";
 
 export default function Home() {
 
   return (
     <div className="">
-<Login></Login>
+hi appcom
 
     </div>
   );
