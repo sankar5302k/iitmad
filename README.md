@@ -5,10 +5,12 @@
 Welcome to our *IIT Madras WebStart Event* project! This is a *production-level* web application designed to provide comprehensive solutions for pet owners, focusing on *dog classification, food recommendations, shopping, and user management*. Our platform is built to enhance the pet care experience using AI-driven features.
 
 ## Tech stack
-*React Js for frontend *
-*Next js for backend APIS*
-*MongoDB for database*
-*Crypto js and Bcrypt for security and privacy of data transfer *
+React Js for frontend 
+Next js for backend APIS
+MongoDB for database
+Crypto js and Bcrypt for security and privacy of data transfer . 
+base 64 encoding for image encoding in DB
+sha 512 hashing algorithm for secure storing passwords
 
 ## Features
 
