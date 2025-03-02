@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IIT Madras WebStart Event - Project README
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+Welcome to our *IIT Madras WebStart Event* project! This is a *production-level* web application designed to provide comprehensive solutions for pet owners, focusing on *dog classification, food recommendations, shopping, and user management*. Our platform is built to enhance the pet care experience using AI-driven features.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech stack
+React Js for frontend 
+Next js for backend APIS
+MongoDB for database
+Crypto js and Bcrypt for security and privacy of data transfer 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🐶 Dog Classification
+- Upload an image to classify dog breeds accurately.
+- AI-powered detection to provide insights on different breeds.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🍖 Dog Food Recommendation
+- Personalized food recommendations based on dog breed, age, and health conditions.
+- AI-driven suggestions to help pet owners choose the best nutrition.
 
-## Learn More
+### 🔑 User Authentication
+- Secure *Login & Registration* system.
+- User credentials are securely stored and managed.
 
-To learn more about Next.js, take a look at the following resources:
+### 🛍️ Shopping for Dog Belongings
+- Browse and purchase pet accessories, toys, food, and more.
+- Secure payment integration for hassle-free shopping.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚧 Upcoming Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- *🔎 Pet Lost & Found Mechanism* - A dedicated section for reporting and finding lost pets.
+- *🤖 AI-Based Pet Training Chatbot* - An interactive chatbot to assist in pet training and behavior improvement.
 
-## Deploy on Vercel
+## 🌍 Demo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Our project Demo : https://drive.google.com/file/d/1Nk2Bc8lRx-7jxzKcdWOslwk94dVViYci/view?usp=sharing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+### 🚀 We are excited to showcase our work at *IIT Madras WebStart* and look forward to your feedback!
+
+Happy Pet Parenting! 🐕🐾
