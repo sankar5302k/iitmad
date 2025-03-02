@@ -3,7 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-
+import { Suspense } from "react";
 export default function Home() {
   const searchParams = useSearchParams();
   const username = searchParams?.get("username");
@@ -26,6 +26,7 @@ export default function Home() {
   }, [username]);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="flex flex-col items-center min-h-screen p-6">
       <h1 className="text-3xl font-bold mb-6">Dashboard for {username}</h1>
 
@@ -71,5 +72,6 @@ export default function Home() {
         <p className="text-gray-500">No uploads found.</p>
       )}
     </div>
+    </Suspense>
   );
 }

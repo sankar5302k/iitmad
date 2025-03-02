@@ -21,7 +21,7 @@ import { Check, Minus, Plus, ShoppingCart, Star, Trash2 } from "lucide-react"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
 import { useToast } from "@/components/ui/use-toast"
-
+import { Suspense } from "react";
 // Product type definition
 type Product = {
   id: number

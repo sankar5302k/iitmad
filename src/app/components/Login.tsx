@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
+import { Suspense } from "react";
 const Login: React.FC = () => {
   const router = useRouter();
   const [tab, setTab] = useState<"register" | "login">("register");
@@ -46,6 +46,7 @@ const Login: React.FC = () => {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="flex items-center justify-center min-h-screen bg-white text-black">
       <div className="w-[400px]">
         <Tabs value={tab} onValueChange={(val) => setTab(val as "register" | "login")}>
@@ -94,7 +95,7 @@ const Login: React.FC = () => {
         </Tabs>
       </div>
     </div>
-  );
+    </Suspense>  );
 };
 
 export default Login;
